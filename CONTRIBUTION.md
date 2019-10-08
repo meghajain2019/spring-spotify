@@ -15,3 +15,5 @@ Also, describing your code through comments for describing your content, should 
 
 Please use proper directory structure, that is, place your new files in proper folders (create those folders if they don't exist).
 
+
+How to create a PR [Create a Pull Request](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github)

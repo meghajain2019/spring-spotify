@@ -8,6 +8,7 @@ Spring boot server to connect to spotify api and return JSON metadata about musi
 
 1. Java8
 2. Spotify Account
+3. Maven
 
 ## How to use
 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+<!--<p>-->
+<!--    <span th:text="${hello}">Hello!</span>-->
+<!--</p>-->
+<p>Inside Html page</p>
+<p>Login to spotify</p>
+<a href="https://accounts.spotify.com/authorize/?scope=user-read-private playlist-read-private playlist-modify-public user-library-read user-read-recently-played streaming app-remote-control&response_type=code&redirect_uri=http://localhost:8080/v1/responseFromSpotify&client_id=3bd4697642864c61b15c7385652cd7b4">click here to redirect to Spotify Web App (where you would authorize this application to get a token to interact with spotify on your behalf)</a>
+</body>
+</html>

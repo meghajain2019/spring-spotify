@@ -4,6 +4,7 @@ package org.dummy.spotify.controllers;
 import org.dummy.spotify.entities.SpotifyUserAuthorizationCode;
 import org.dummy.spotify.services.AuthorizationService;
 import org.dummy.spotify.services.PlayerService;
+import org.dummy.spotify.services.PlaylistsService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -20,6 +21,9 @@ public class HelloController {
 
     @Autowired
     PlayerService playerService;
+
+    @Autowired
+    PlaylistsService playlistsService;
 
     SpotifyUserAuthorizationCode spotifyUserAuthorizationCode = new SpotifyUserAuthorizationCode();
 
@@ -42,6 +46,17 @@ public class HelloController {
         spotifyUserAuthorizationCode.setRefreshToken((String) result.get("refresh_token"));
         spotifyUserAuthorizationCode.setTokenType((String) result.get("token_type"));
         result.put("goToRecentlyPlayedLink", "http://localhost:8080/v1/recentlyPlayed");
+        return result;
+    }
+
+    @GetMapping("/me/playlists")
+    public JSONObject getCurrentUsersPlaylist() {
+        JSONObject response = new JSONObject();
+        if (spotifyUserAuthorizationCode.getAccessToken() == null || spotifyUserAuthorizationCode.getAccessToken().isEmpty()) {
+            response.put("Error", "UserAccessToken not fetched yet");
+            return response;
+        }
+        JSONObject result = playlistsService.getCurrentUsersPlaylist(spotifyUserAuthorizationCode.getTokenType() + " " + spotifyUserAuthorizationCode.getAccessToken());
         return result;
     }
 
